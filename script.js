@@ -5,7 +5,7 @@
 (function () {
   'use strict';
 
-  // ---------- Navbar scroll behaviour ----------
+  // ---------- Navbar scroll behavior ----------
   const navbar = document.getElementById('navbar');
 
   function updateNavbar() {
