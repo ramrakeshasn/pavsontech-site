@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pavsontech | Digital Architecture for Mission-Critical Sectors</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <style>
+        :root {
+            --bg-dark: #0a0b10;
+            --card-bg: rgba(20, 22, 36, 0.7);
+            --primary-neon: #00f2fe;
+            --secondary-neon: #4facfe;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border-glow: rgba(0, 242, 254, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Futuristic Background Matrix Grid */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: 
+                linear-gradient(rgba(10, 11, 16, 0.9), rgba(10, 11, 16, 0.9)),
+                linear-gradient(90deg, rgba(0, 242, 254, 0.03) 1px, transparent 1px),
+                linear-gradient(rgba(0, 242, 254, 0.03) 1px, transparent 1px);
+            background-size: 100% 100%, 40px 40px, 40px 40px;
+            z-index: -1;
+        }
+
+        /* Header Navigation */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 10%;
+            background: rgba(10, 11, 16, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, var(--primary-neon), var(--secondary-neon));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            color: var(--primary-neon);
+            -webkit-text-fill-color: initial;
+            text-shadow: 0 0 15px var(--primary-neon);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--primary-neon);
+            text-shadow: 0 0 10px rgba(0, 242, 254, 0.5);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 10%;
+            margin-top: 4rem;
+            position: relative;
+        }
+
+        /* Glowing Tech Orb Background effect */
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 450px;
+            height: 450px;
+            background: radial-gradient(circle, rgba(0, 242, 254, 0.08) 0%, transparent 70%);
+            top: 20%;
+            z-index: -1;
+            filter: blur(40px);
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            max-width: 900px;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, var(--primary-neon), var(--secondary-neon));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(0, 242, 254, 0.2);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin-bottom: 3rem;
+        }
+
+        .cta-btn {
+            background: linear-gradient(135deg, var(--primary-neon), var(--secondary-neon));
+            color: #000;
+            padding: 1rem 2.5rem;
+            border-none: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.3);
+            text-decoration: none;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 35px rgba(0, 242, 254, 0.6);
+        }
+
+        /* Pillars Section (Target Industries) */
+        .sectors {
+            padding: 8rem 10%;
+            background: rgba(8, 9, 13, 0.5);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 4rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--primary-neon);
+            margin: 10px auto 0;
+            box-shadow: 0 0 10px var(--primary-neon);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-glow);
+            padding: 3rem 2rem;
+            border-radius: 8px;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 242, 254, 0.05), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-neon);
+            box-shadow: 0 10px 30px rgba(0, 242, 254, 0.1);
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card i {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, var(--primary-neon), var(--secondary-neon));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1.5rem;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            letter-spacing: 0.5px;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Core Framework Expertise Section */
+        .capabilities {
+            padding: 8rem 10%;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .tag {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            color: var(--text-main);
+            transition: all 0.3s ease;
+        }
+
+        .tag:hover {
+            border-color: var(--secondary-neon);
+            background: rgba(79, 172, 254, 0.1);
+            color: var(--primary-neon);
+            transform: scale(1.05);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 8rem 10%;
+            text-align: center;
+            background: linear-gradient(180deg, transparent, rgba(0, 242, 254, 0.03));
+        }
+
+        .contact p {
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            font-size: 1.1rem;
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 10%;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* Responsive Design Rules */
+        @media (max-width: 768px) {
+            header { padding: 1.2rem 5%; }
+            nav { display: none; } /* Kept clean for single-page setup */
+            .hero h1 { font-size: 2.5rem; }
+            .hero p { font-size: 1rem; }
+            .sectors, .capabilities, .contact { padding: 5rem 5%; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <i class="fa-solid fa-cubes"></i> pavsontech
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#sectors">Sectors</a></li>
+                <li><a href="#capabilities">Architecture</a></li>
+                <li><a href="#connect">Initiate Briefing</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Architecting Next-Generation Systems for <span>Enterprise & State</span> Infrastructure</h1>
+        <p>High-stakes digital architecture consulting. Bridging legacy complexity with futuristic, bulletproof technologies for Government, Banking, and Telecommunications networks.</p>
+        <a href="#connect" class="cta-btn">Initiate Strategic Briefing</a>
+    </section>
+
+    <section id="sectors" class="sectors">
+        <h2 class="section-title">Core Verticals</h2>
+        <div class="grid">
+            <div class="card">
+                <i class="fa-solid fa-landmark-flag"></i>
+                <h3>Government Systems</h3>
+                <p>Designing secure, citizen-centric, and highly compliant sovereign architectures. Future-proofing public infrastructure through zero-trust frameworks, resilient data layers, and inter-agency semantic interoperability.</p>
+            </div>
+            <div class="card">
+                <i class="fa-solid fa-building-columns"></i>
+                <h3>Banking & FinTech</h3>
+                <p>Engineering hyper-scalable transaction engines, distributed ledger bridges, and real-time fraud mitigation architectures. Ensuring fault-tolerant structures that handle millions of operations per second with microsecond latency.</p>
+            </div>
+            <div class="card">
+                <i class="fa-solid fa-tower-cell"></i>
+                <h3>Telecommunications</h3>
+                <p>Architecting software-defined networking (SDN), edge compute paradigms, and next-generation cloud OSS/BSS integrations capable of supporting the immense bandwidth and low latency demanded by tomorrow's ecosystems.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="capabilities" class="capabilities">
+        <h2 class="section-title">The Architecture Paradigm</h2>
+        <div class="tech-tags">
+            <div class="tag">Zero Trust Network Architecture (ZTNA)</div>
+            <div class="tag">Multi-Cloud & Sovereign Cloud Strategy</div>
+            <div class="tag">High-Throughput Microservices</div>
+            <div class="tag">Distributed Ledger Technology (DLT) Integration</div>
+            <div class="tag">Event-Driven Architecture (EDA)</div>
+            <div class="tag">AI/ML Pipeline Infrastructure</div>
+            <div class="tag">Quantum-Safe Encryption Migration</div>
+            <div class="tag">Legacy Modernization & Strangler Patterns</div>
+            <div class="tag">API Federation & Mesh Ecosystems</div>
+        </div>
+    </section>
+
+    <section id="connect" class="contact">
+        <h2 class="section-title">Design Your Future Blueprint</h2>
+        <p>Prepare your system architectures for the decade ahead. Reach out to schedule a confidential technical consulting session tailored to complex enterprise structures.</p>
+        <a href="mailto:contact@pavsontech.com" class="cta-btn">Connect With Principal Architect</a>
+    </section>
+
+    <footer>
+        <div>&copy; 2026 pavsontech.com. All Rights Reserved.</div>
+        <div>Digital Architecture | High-Stakes Consulting</div>
+    </footer>
+
+</body>
+</html>
