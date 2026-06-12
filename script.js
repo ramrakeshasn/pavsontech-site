@@ -23,6 +23,13 @@
   const hamburger = document.getElementById('hamburger');
   const navLinks  = document.getElementById('nav-links');
 
+  function closeMenu() {
+    navLinks.classList.remove('open');
+    hamburger.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+
   hamburger.addEventListener('click', function () {
     const isOpen = navLinks.classList.toggle('open');
     hamburger.classList.toggle('open', isOpen);
@@ -32,13 +39,15 @@
 
   // Close menu when a nav link is clicked
   navLinks.querySelectorAll('a').forEach(function (link) {
-    link.addEventListener('click', function () {
-      navLinks.classList.remove('open');
-      hamburger.classList.remove('open');
-      hamburger.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
-    });
+    link.addEventListener('click', closeMenu);
   });
+
+  // Ensure scroll isn't locked if the viewport is resized while the menu is open
+  window.addEventListener('resize', function () {
+    if (window.matchMedia('(min-width: 769px)').matches) {
+      closeMenu();
+    }
+  }, { passive: true });
 
   // ---------- Smooth-scroll offset for fixed navbar ----------
   document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
