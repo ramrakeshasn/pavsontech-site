@@ -30,7 +30,6 @@
             line-height: 1.6;
         }
 
-        /* Futuristic Background Matrix Grid */
         body::before {
             content: "";
             position: fixed;
@@ -46,7 +45,6 @@
             z-index: -1;
         }
 
-        /* Header Navigation */
         header {
             display: flex;
             justify-content: space-between;
@@ -100,7 +98,6 @@
             text-shadow: 0 0 10px rgba(0, 242, 254, 0.5);
         }
 
-        /* Hero Section */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -113,7 +110,6 @@
             position: relative;
         }
 
-        /* Glowing Tech Orb Background effect */
         .hero::after {
             content: '';
             position: absolute;
@@ -152,7 +148,7 @@
             background: linear-gradient(135deg, var(--primary-neon), var(--secondary-neon));
             color: #000;
             padding: 1rem 2.5rem;
-            border-none: none;
+            border: none;
             border-radius: 4px;
             font-size: 1rem;
             font-weight: 700;
@@ -162,6 +158,7 @@
             transition: all 0.3s ease;
             box-shadow: 0 0 20px rgba(0, 242, 254, 0.3);
             text-decoration: none;
+            display: inline-block;
         }
 
         .cta-btn:hover {
@@ -169,7 +166,6 @@
             box-shadow: 0 0 35px rgba(0, 242, 254, 0.6);
         }
 
-        /* Pillars Section (Target Industries) */
         .sectors {
             padding: 8rem 10%;
             background: rgba(8, 9, 13, 0.5);
@@ -251,7 +247,6 @@
             font-size: 0.95rem;
         }
 
-        /* Core Framework Expertise Section */
         .capabilities {
             padding: 8rem 10%;
         }
@@ -283,7 +278,6 @@
             transform: scale(1.05);
         }
 
-        /* Contact Section */
         .contact {
             padding: 8rem 10%;
             text-align: center;
@@ -297,7 +291,6 @@
             font-size: 1.1rem;
         }
 
-        /* Footer */
         footer {
             padding: 3rem 10%;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
@@ -308,13 +301,148 @@
             font-size: 0.85rem;
         }
 
-        /* Responsive Design Rules */
+        /* --- FUTURISTIC FORM MODAL INTERFACE --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(5, 6, 10, 0.85);
+            backdrop-filter: blur(15px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+            z-index: 1000;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-container {
+            background: #0d0f1a;
+            border: 1px solid var(--primary-neon);
+            box-shadow: 0 0 40px rgba(0, 242, 254, 0.25);
+            width: 100%;
+            max-width: 550px;
+            padding: 2.5rem;
+            border-radius: 8px;
+            position: relative;
+            transform: scale(0.9);
+            transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .modal-overlay.active .modal-container {
+            transform: scale(1);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1.2rem;
+            right: 1.5rem;
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close-modal:hover {
+            color: var(--primary-neon);
+        }
+
+        .modal-container h2 {
+            margin-bottom: 0.5rem;
+            font-size: 1.8rem;
+            letter-spacing: 1px;
+        }
+
+        .modal-container p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .form-group {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 1.2rem;
+        }
+
+        .form-row .form-group {
+            margin-bottom: 0;
+        }
+
+        .form-group label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+            color: var(--text-muted);
+        }
+
+        .form-group input, .form-group textarea {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 0.8rem 1rem;
+            border-radius: 4px;
+            color: #fff;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-neon);
+            box-shadow: 0 0 10px rgba(0, 242, 254, 0.2);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .form-group textarea {
+            resize: none;
+            height: 120px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary-neon), var(--secondary-neon));
+            color: #000;
+            padding: 1rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(0, 242, 254, 0.2);
+            transition: all 0.3s;
+        }
+
+        .submit-btn:hover {
+            box-shadow: 0 0 25px rgba(0, 242, 254, 0.5);
+            transform: translateY(-2px);
+        }
+
         @media (max-width: 768px) {
             header { padding: 1.2rem 5%; }
-            nav { display: none; } /* Kept clean for single-page setup */
+            nav { display: none; }
             .hero h1 { font-size: 2.5rem; }
             .hero p { font-size: 1rem; }
             .sectors, .capabilities, .contact { padding: 5rem 5%; }
+            .form-row { flex-direction: column; gap: 1.2rem; }
+            .modal-container { padding: 1.5rem; width: 90%; }
         }
     </style>
 </head>
@@ -328,7 +456,7 @@
             <ul>
                 <li><a href="#sectors">Sectors</a></li>
                 <li><a href="#capabilities">Architecture</a></li>
-                <li><a href="#connect">Initiate Briefing</a></li>
+                <li><a href="javascript:void(0)" onclick="toggleModal()">Initiate Briefing</a></li>
             </ul>
         </nav>
     </header>
@@ -336,7 +464,7 @@
     <section class="hero">
         <h1>Architecting Next-Generation Systems for <span>Enterprise & State</span> Infrastructure</h1>
         <p>High-stakes digital architecture consulting. Bridging legacy complexity with futuristic, bulletproof technologies for Government, Banking, and Telecommunications networks.</p>
-        <a href="#connect" class="cta-btn">Initiate Strategic Briefing</a>
+        <button onclick="toggleModal()" class="cta-btn">Initiate Strategic Briefing</button>
     </section>
 
     <section id="sectors" class="sectors">
@@ -362,29 +490,4 @@
 
     <section id="capabilities" class="capabilities">
         <h2 class="section-title">The Architecture Paradigm</h2>
-        <div class="tech-tags">
-            <div class="tag">Zero Trust Network Architecture (ZTNA)</div>
-            <div class="tag">Multi-Cloud & Sovereign Cloud Strategy</div>
-            <div class="tag">High-Throughput Microservices</div>
-            <div class="tag">Distributed Ledger Technology (DLT) Integration</div>
-            <div class="tag">Event-Driven Architecture (EDA)</div>
-            <div class="tag">AI/ML Pipeline Infrastructure</div>
-            <div class="tag">Quantum-Safe Encryption Migration</div>
-            <div class="tag">Legacy Modernization & Strangler Patterns</div>
-            <div class="tag">API Federation & Mesh Ecosystems</div>
-        </div>
-    </section>
-
-    <section id="connect" class="contact">
-        <h2 class="section-title">Design Your Future Blueprint</h2>
-        <p>Prepare your system architectures for the decade ahead. Reach out to schedule a confidential technical consulting session tailored to complex enterprise structures.</p>
-        <a href="mailto:contact@pavsontech.com" class="cta-btn">Connect With Principal Architect</a>
-    </section>
-
-    <footer>
-        <div>&copy; 2026 pavsontech.com. All Rights Reserved.</div>
-        <div>Digital Architecture | High-Stakes Consulting</div>
-    </footer>
-
-</body>
-</html>
+        <div class="
