@@ -94,9 +94,9 @@
       e.preventDefault();
       success.textContent = '';
 
-      const name    = form.name.value.trim();
-      const email   = form.email.value.trim();
-      const message = form.message.value.trim();
+      const name    = form.elements['name'].value.trim();
+      const email   = form.elements['email'].value.trim();
+      const message = form.elements['message'].value.trim();
 
       if (!name || !email || !message) {
         success.style.color = '#f87171';
