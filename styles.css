@@ -753,6 +753,12 @@ ul { list-style: none; }
   transform: translateY(0);
 }
 
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .scroll-indicator span { animation: none; }
+  .fade-up { opacity: 1; transform: none; transition: none; }
+}
+
 /* ---------- Responsive ---------- */
 @media (max-width: 1024px) {
   .services-grid { grid-template-columns: repeat(2, 1fr); }
